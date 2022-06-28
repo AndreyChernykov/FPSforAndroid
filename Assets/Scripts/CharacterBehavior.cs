@@ -7,6 +7,8 @@ public class CharacterBehavior : MonoBehaviour
 {
     float angleVert;
     float maxAngleVert = 20;//максимальный угол поворота вверх/вниз
+   
+
 
     private new Rigidbody rigidbody;
     [SerializeField] private new Component camera;
@@ -20,15 +22,9 @@ public class CharacterBehavior : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
-    {
-        
-        
-    }
 
     public void Move()//ходьба
-    {
-        
+    {       
         rigidbody.AddForce(gameObject.transform.forward * speedMove);
         
     }
@@ -36,14 +32,7 @@ public class CharacterBehavior : MonoBehaviour
     public void Turn()//поворот влево/вправо
     {
         transform.rotation *= Quaternion.Euler(0, joystick.Horizontal, 0);
-        if (joystick.Horizontal != 0 || joystick.Vertical != 0) 
-        {
 
-
-            
-            
-            
-        }
     }
 
     public void VertVisibl()//поворот вверх/вниз
@@ -53,4 +42,6 @@ public class CharacterBehavior : MonoBehaviour
 
         camera.transform.localEulerAngles = new Vector3 (angleVert, 0, 0);
     }
+
+
 }

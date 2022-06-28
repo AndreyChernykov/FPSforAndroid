@@ -7,7 +7,8 @@ using UnityEngine.Events;
 public class MainController : MonoBehaviour
 {
     //private event Action action;
-    public static List<Action> actionList = new List<Action>();
+    public static List<Action> actionList = new List<Action>();//лист с событиями
+    
     void Start()
     {
 
@@ -23,6 +24,7 @@ public class MainController : MonoBehaviour
     void ActionRead()
     {
         foreach(var action in actionList) action.Invoke();
+        
         //actionList.Clear();
     }
 }

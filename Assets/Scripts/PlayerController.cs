@@ -7,21 +7,17 @@ public class PlayerController : MonoBehaviour
     //[SerializeField] Rigidbody rigid
     
     CharacterBehavior characterBehavior;
-    // Start is called before the first frame update
+    Gun gun;
+    
     
     void Start()
     {
         characterBehavior = gameObject.GetComponent<CharacterBehavior>();
+        gun = gameObject.GetComponentInChildren<Gun>();
         Joystick();
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        
-        
-        //
-    }
+
 
     public void ClickBtnMove()
     {
@@ -37,5 +33,26 @@ public class PlayerController : MonoBehaviour
     {
         MainController.actionList.Add(characterBehavior.Turn);
         MainController.actionList.Add(characterBehavior.VertVisibl);
+    }
+
+    public void ClickBtnShoot()
+    {
+        gun.Shoot();
+        
+    }
+
+    public void UnClickBtnShoot()
+    {
+        //MainController.actionList.Remove(gun.Shoot);
+    }
+
+    public void ClickBtnCharged()
+    {
+        MainController.actionList.Add(gun.ChargedGun);
+    }
+
+    public void UnClickBtnCharged()
+    {
+        MainController.actionList.Remove(gun.ChargedGun);
     }
 }
