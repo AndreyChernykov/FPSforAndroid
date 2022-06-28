@@ -48,11 +48,11 @@ public class PlayerController : MonoBehaviour
 
     public void ClickBtnCharged()
     {
-        MainController.actionList.Add(gun.ChargedGun);
+        if(gun != null) MainController.actionList.Add(gun.ChargedGun);
     }
 
     public void UnClickBtnCharged()
     {
-        MainController.actionList.Remove(gun.ChargedGun);
+        if (gun != null) MainController.actionList.Remove(gun.ChargedGun);
     }
 }
