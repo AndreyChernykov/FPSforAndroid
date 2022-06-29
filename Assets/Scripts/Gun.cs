@@ -8,6 +8,7 @@ public class Gun : MonoBehaviour
     private int numberOfBullet = 2;//количество заряжаемых патронов
     private int bulletOfShoot = 0;//количество выстрелов до перезарядки
     [SerializeField] int bullet = 10;//патронов в запасе
+    [SerializeField] GameObject bulletPref;
 
     public void Shoot()//выстрелы
     {
@@ -17,7 +18,12 @@ public class Gun : MonoBehaviour
             bulletOfShoot++;
             Debug.Log(bulletOfShoot + " bang!");
             gunIsCharged = bulletOfShoot >= numberOfBullet ? false : true;
+            GameObject bl = Instantiate(bulletPref);
+            bl.transform.SetParent(gameObject.transform);
+            bl.transform.localPosition = new Vector3(0, -0.22f, 2);
 
+            bl.transform.rotation = transform.rotation;
+            bl.transform.parent = null;
         }
 
     }
