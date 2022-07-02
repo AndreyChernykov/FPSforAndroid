@@ -6,13 +6,13 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-
+    [SerializeField] public int amountBullets;
     float speed = 100;
-    int damage;
+    [SerializeField] int damage;
     float lifeTime = 1;
     private new Rigidbody rigidbody;
     private float scattX = 0, scattY = 0;
-    private float angleScatt = 20;
+    [SerializeField] private float angleScatt;
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -21,7 +21,7 @@ public class Bullet : MonoBehaviour
         scattY = Scatter();
 
         Invoke("Destroy", lifeTime);
-        
+       
     }
 
     private float Scatter()//разлёт для дроби

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -46,13 +47,33 @@ public class PlayerController : MonoBehaviour
         //MainController.actionList.Remove(gun.Shoot);
     }
 
-    public void ClickBtnCharged()
+    public void ClickBtnCharged(Button btn)
     {
-        if(gun != null) MainController.actionList.Add(gun.ChargedGun);
+        
+        if (gun != null)
+        { 
+            switch (btn.tag)
+            {
+                case "bullet":
+                    MainController.actionList.Add(gun.ChargedBullet);
+                    break;
+                case "dummy":
+                    MainController.actionList.Add(gun.ChargedDummy);
+                    break;
+                case "shot":
+                    MainController.actionList.Add(gun.ChargedShot);
+                    break;
+            }
+        } 
     }
 
     public void UnClickBtnCharged()
     {
-        if (gun != null) MainController.actionList.Remove(gun.ChargedGun);
+        if (gun != null)
+        {
+            MainController.actionList.Remove(gun.ChargedBullet);
+            MainController.actionList.Remove(gun.ChargedShot);
+            MainController.actionList.Remove(gun.ChargedDummy);
+        }
     }
 }
