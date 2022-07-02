@@ -54,7 +54,7 @@ public class Gun : MonoBehaviour
 
     public void ChargedBullet()//зарядка пулями
     {
-        if (!gunIsCharged)
+        if (!gunIsCharged && inventary.Bullet > 0)
         {
             inventary.SubBullet(numberOfBullet);
             bulletPref = typOfBullet[0];

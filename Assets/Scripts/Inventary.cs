@@ -8,7 +8,10 @@ public class Inventary
     static int bullet = 10;//обычные патроны
     static int shotBullet = 10;//дробь
 
-
+    public int Bullet
+    {
+        get { return bullet; }
+    }
     public void AddBullet(int n)
     {
         bullet += n;

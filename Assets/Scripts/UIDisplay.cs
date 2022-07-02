@@ -11,8 +11,7 @@ public class UIDisplay : MonoBehaviour
     {
         inventary = new Inventary();
         MainController.actionList.Add(DisplayNumberOfBullet);
-        
-        
+              
     }
 
     public void DisplayNumberOfBullet()//отоброжение количества патронов
