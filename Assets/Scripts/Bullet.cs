@@ -21,12 +21,12 @@ public class Bullet : MonoBehaviour
         scattY = Scatter();
 
         Invoke("Destroy", lifeTime);
-
-        
        
     }
 
-    private float Scatter()//разлёт для дроби
+    public int Damage { get { return damage; } }
+
+private float Scatter()//разлёт для дроби
     {
         return UnityEngine.Random.Range(-angleScatt, angleScatt);
     }
@@ -40,6 +40,7 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision.gameObject.name);
+        
         Destroy();
     }
 

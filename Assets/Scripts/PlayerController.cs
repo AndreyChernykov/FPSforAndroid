@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
     public void ClickBtnMove()
     {
         MainController.actionList.Add(characterBehavior.Move);
+        
+
     }
 
     public void UnClickBtnMove()
