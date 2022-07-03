@@ -11,15 +11,17 @@ public class CharacterBehavior : MonoBehaviour
 
 
     private new Rigidbody rigidbody;
+
     [SerializeField] private new Component camera;
     [SerializeField] private FixedJoystick joystick;
+    [SerializeField] private int health;
+    private int maxHealth;
     private float speedMove = 7;//скорость перемещения
     
     void Start()
     {
         rigidbody = gameObject.GetComponent<Rigidbody>();
-
-
+        maxHealth = health;
     }
 
 
@@ -43,5 +45,19 @@ public class CharacterBehavior : MonoBehaviour
         camera.transform.localEulerAngles = new Vector3 (angleVert, 0, 0);
     }
 
+    public void Fault()//сделать чтобы повреждение могло быть не на единицу а разное
+    {
+        if(health >= 0)
+        {
+            health--;
+        }
+    }
 
+   private void Recovery()//сделать чтоб здоровье восстанавливалось автоматически за опрделённое время
+    {
+        if(health > 0 && health < maxHealth)
+        {
+            health++;
+        }
+    }
 }

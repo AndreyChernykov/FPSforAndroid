@@ -2320,7 +2320,8 @@ MonoBehaviour:
   health: 10
   damage: 0
   speed: 70
-  obstacleRange: 10
+  turnSpeed: 5
+  obstacleRange: 3
 --- !u!65 &1555442427
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2389,7 +2390,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1555442425}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6313952, y: 1.13, z: 31.22}
+  m_LocalPosition: {x: -0.6313952, y: 1.13, z: 13.3}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children:
   - {fileID: 160470739}
