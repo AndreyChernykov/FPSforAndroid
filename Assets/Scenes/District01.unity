@@ -279,6 +279,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: RightHend
       objectReference: {fileID: 0}
+    - target: {fileID: 271670237725315237, guid: 1e0aaf7b598beb24399b3043fb606df4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 271670237725315237, guid: 1e0aaf7b598beb24399b3043fb606df4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 616705114838239775, guid: 1e0aaf7b598beb24399b3043fb606df4,
         type: 3}
       propertyPath: m_RootOrder
@@ -587,7 +597,7 @@ GameObject:
   - component: {fileID: 341816295}
   m_Layer: 0
   m_Name: Gun
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1587,14 +1597,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1036141010}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.63138485, y: 2.36, z: 26.9}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -0.3, y: 2.36, z: 31.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 963194228}
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!54 &1036141016
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1610,7 +1620,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &1036141017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1625,6 +1635,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 963194227}
   joystick: {fileID: 156921639}
+  health: 10
+  timeRecovery: 5
 --- !u!114 &1036141018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1924,6 +1936,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LeftHend
+      objectReference: {fileID: 0}
+    - target: {fileID: 1518703115762004142, guid: c9dbcc4e3974045478310ffa12b39224,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1518703115762004142, guid: c9dbcc4e3974045478310ffa12b39224,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2167029241916648310, guid: c9dbcc4e3974045478310ffa12b39224,
         type: 3}
@@ -2300,7 +2322,7 @@ GameObject:
   - component: {fileID: 1555442431}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2320,8 +2342,11 @@ MonoBehaviour:
   health: 10
   damage: 0
   speed: 70
+  speedAttack: 200
   turnSpeed: 5
-  obstacleRange: 3
+  distanceObstacle: 3
+  distanceAttack: 10
+  bullet: {fileID: 6914588200281155589, guid: dfea463755457f24a80b282269e58f04, type: 3}
 --- !u!65 &1555442427
 BoxCollider:
   m_ObjectHideFlags: 0

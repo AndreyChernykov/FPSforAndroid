@@ -40,8 +40,7 @@ private float Scatter()//разлёт для дроби
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision.gameObject.name);
-        
-        Destroy();
+        if(collision.gameObject.tag != gameObject.tag) Destroy();
     }
 
     public void Destroy()

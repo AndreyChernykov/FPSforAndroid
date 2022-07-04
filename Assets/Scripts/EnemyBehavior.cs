@@ -9,12 +9,16 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] int health = 10;
     [SerializeField] int damage;
     [SerializeField] int speed;
+    [SerializeField] int speedAttack;
     [SerializeField] int turnSpeed;
-    [SerializeField] float obstacleRange;//как далеко видит враг
+    [SerializeField] float distanceObstacle;//как далеко видит враг препятствия
+    [SerializeField] float distanceAttack;//с какого расстояния начинает нападать
+    [SerializeField] GameObject bullet;
+    private bool isAttacked = false;
 
     private new Rigidbody rigidbody;
     int angle = 0;
-    float radiusRay = 1;
+    float radiusRay = 1.5f;
     Ray ray;
 
     
@@ -34,51 +38,63 @@ public class EnemyBehavior : MonoBehaviour
             health -= dmg;
             if (health <= 0) { OnDestroy(); }
         }
-    }
 
-    public void Behavior()
-    {
-        Turn();
         
-
     }
+
+
 
     void Attack()//атака
     {
-        Debug.Log("piu piu!");
+        //Debug.Log("piu piu!");
+        
+        Move(speedAttack);
     }
 
-    private void Turn()//повороты
-    {
+    public void Behavior()
+{
         ray = new Ray(gameObject.transform.position, transform.forward);
 
         RaycastHit hit;
         if (Physics.SphereCast(ray, radiusRay, out hit))
         {
-
-            if (hit.distance < obstacleRange)
+            if (!isAttacked)
             {
-                if (hit.collider.tag == "Player") 
+                if (hit.distance < distanceObstacle)
                 {
-                    Attack();
-                    Move();
-                } 
-                else transform.rotation *= Quaternion.Euler(0, angle, 0);
-                Debug.Log(hit.collider.name);
+                    transform.rotation *= Quaternion.Euler(0, angle, 0);
+
+                }
+                else
+                {
+                    int[] arr = { -turnSpeed, turnSpeed };
+                    angle = arr[Random.Range(0, arr.Length)];
+                    Move(speed);
+                }
+
+                if (hit.collider.tag == "Player")
+                {
+                    if(hit.distance < distanceAttack)
+                    {
+                        isAttacked = true;
+                    }
+
+                }
             }
             else
             {
-                int[] arr = { -turnSpeed, turnSpeed };
-                angle = arr[Random.Range(0, arr.Length)];
-                Move();
+                Attack();
+                if(hit.collider.tag != "Player") isAttacked = false;
             }
 
+
         }
+
     }
 
-    private void Move()//движение
+    private void Move(int s)//движение
     {
-        rigidbody.velocity = transform.forward * speed * Time.deltaTime;
+        rigidbody.velocity = transform.forward * s * Time.deltaTime;
     }
 
     private void OnDestroy()

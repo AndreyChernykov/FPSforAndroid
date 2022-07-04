@@ -109,7 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amountBullets: 1
   damage: 5
-  angleScatt: 5
+  angleScatt: 2
 --- !u!54 &6914588200281155599
 Rigidbody:
   m_ObjectHideFlags: 0
