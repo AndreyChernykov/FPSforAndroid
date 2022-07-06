@@ -14,16 +14,15 @@ public class CharacterBehavior : MonoBehaviour
 
     [SerializeField] private new Component camera;
     [SerializeField] private FixedJoystick joystick;
-    [SerializeField] private int health;
+    
     [SerializeField] private float timeRecovery;//время восстановления единицы здоровья
-    private int maxHealth;
+    Inventary inventary;
     private float speedMove = 7;//скорость перемещения
     
     void Start()
     {
         rigidbody = gameObject.GetComponent<Rigidbody>();
-        maxHealth = health;
-
+        inventary = new Inventary();
         StartCoroutine(HealthRecovery());
     }
 
@@ -58,31 +57,17 @@ public class CharacterBehavior : MonoBehaviour
     {
         rigidbody.AddForce(-transform.forward * 200);
         rigidbody.AddForce(transform.up * 200);
-        if (health >= 0)
-        {
-            health--;           
-        }
+        
+        inventary.HealthFault();
     }
 
-   private void Recovery()//сделать чтоб здоровье восстанавливалось автоматически за опрделённое время
-    {
-        
-        
-    }
 
-    IEnumerator HealthRecovery()
+    IEnumerator HealthRecovery()//авто восстановление здоровья
     {
         while (true)
         {
-            if (health > 0 && health < maxHealth)
-            {
-                
-                health++;
-
-            }
+            inventary.HealthRecovery();
             yield return new WaitForSeconds(timeRecovery);
         }
-        
-
     }
 }

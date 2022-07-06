@@ -4,9 +4,34 @@ using UnityEngine;
 
 public class Inventary
 {
+    static int health = 10;//здоровье героя
+    const int maxHealth = 10;
+
     static int dummyBullet = 10;//холостые патроны
     static int bullet = 10;//обычные патроны
     static int shotBullet = 10;//дробь
+
+    public int Health
+    {
+        get { return health; }
+    }
+
+    public void HealthFault()//повреждение здоровья
+    {
+
+        if (health >= 0)
+        {
+            health--;
+        }
+    }
+
+    public void HealthRecovery()//восстановление здоровья
+    {
+        if (health > 0 && health < maxHealth)
+        {
+            health++;
+        }
+    }
 
     public int Bullet
     {
