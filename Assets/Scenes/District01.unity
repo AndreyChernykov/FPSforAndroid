@@ -2453,6 +2453,7 @@ GameObject:
   - component: {fileID: 1555442428}
   - component: {fileID: 1555442427}
   - component: {fileID: 1555442426}
+  - component: {fileID: 1555442432}
   - component: {fileID: 1555442431}
   m_Layer: 0
   m_Name: Enemy
@@ -2474,13 +2475,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  damage: 0
-  speed: 70
-  speedAttack: 200
-  turnSpeed: 5
-  distanceObstacle: 3
-  distanceAttack: 10
-  bullet: {fileID: 6914588200281155589, guid: dfea463755457f24a80b282269e58f04, type: 3}
 --- !u!65 &1555442427
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2572,6 +2566,25 @@ Rigidbody:
   m_Interpolate: 2
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1555442432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555442425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33a160f730d769b4d8458688361b4c68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  damage: 0
+  speed: 70
+  speedAttack: 200
+  turnSpeed: 0
+  distanceObstacle: 0
+  distanceAttack: 0
 --- !u!1 &1555932631
 GameObject:
   m_ObjectHideFlags: 0
