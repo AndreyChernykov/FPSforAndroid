@@ -2,15 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class EnemyBehavior : MonoBehaviour
 {
-    [SerializeField] private int health = 10;
+    [SerializeField] int health;
+    [SerializeField] private int damage;
+    [SerializeField] private int speed;
     private new Rigidbody rigidbody;
-
-    
-    protected void Start()
+   
+    private void Start()
     {
         rigidbody = GetComponent<Rigidbody>();  
     }
@@ -23,8 +23,7 @@ public class EnemyBehavior : MonoBehaviour
             health -= dmg;
             if (health <= 0) { OnDestroy(); }
         }
-
-        
+       
     }
 
     public void Move(int s)//движение
@@ -32,8 +31,18 @@ public class EnemyBehavior : MonoBehaviour
         rigidbody.velocity = transform.forward * s * Time.deltaTime;
     }
 
-    protected void OnDestroy()
+    public void OnDestroy()
     {        
         Destroy(gameObject);
+    }
+
+    public int Speed
+    {
+        get { return speed; }
+    }
+
+    public int Damage
+    {
+        get { return damage; }
     }
 }

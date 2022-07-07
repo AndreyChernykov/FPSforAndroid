@@ -16,12 +16,11 @@ public class Inventary
         get { return health; }
     }
 
-    public void HealthFault()//повреждение здоровья
+    public void HealthFault(int d)//повреждение здоровья
     {
-
         if (health >= 0)
         {
-            health--;
+            health-=d;
         }
     }
 

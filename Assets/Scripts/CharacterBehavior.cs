@@ -50,15 +50,20 @@ public class CharacterBehavior : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         
-        if (collision.gameObject.tag == "enemy") Fault();
+        if (collision.gameObject.tag == "enemy")
+        {
+            int dmg = collision.gameObject.GetComponent<EnemyBehavior>().Damage;
+            Fault(dmg);
+        }
+
     }
 
-    public void Fault()//сделать чтобы повреждение могло быть не на единицу а разное
+    public void Fault(int d)//сделать чтобы повреждение могло быть не на единицу а разное
     {
         rigidbody.AddForce(-transform.forward * 200);
         rigidbody.AddForce(transform.up * 200);
         
-        inventary.HealthFault();
+        inventary.HealthFault(d);
     }
 
 
