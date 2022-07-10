@@ -49,13 +49,17 @@ public class CharacterBehavior : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        
+        int dmg;
         if (collision.gameObject.tag == "enemy")
         {
-            int dmg = collision.gameObject.GetComponent<EnemyBehavior>().Damage;
+            dmg = collision.gameObject.GetComponent<EnemyBehavior>().Damage;
             Fault(dmg);
         }
-
+        if(collision.gameObject.tag == "bullet")
+        {
+            dmg = collision.gameObject.GetComponent<Bullet>().Damage;
+            Fault(dmg);
+        }
     }
 
     public void Fault(int d)//сделать чтобы повреждение могло быть не на единицу а разное

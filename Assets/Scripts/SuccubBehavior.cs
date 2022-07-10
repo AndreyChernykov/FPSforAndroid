@@ -10,7 +10,7 @@ public class SuccubBehavior : MonoBehaviour
     [SerializeField] float distanceAttack;//с какого расстояния начинает нападать
     [SerializeField] GameObject bullet;
     EnemyBehavior enemyBehavior;
-    bool isAttacked = false;
+    public bool isAttacked = false;
     int angle = 1;//угол поворота
     bool turnRight = true;
     float radiusRay = 1f;
@@ -26,14 +26,7 @@ public class SuccubBehavior : MonoBehaviour
 
     void Attack()//атака
     {
-        //Debug.Log("piu piu!");
-        //angle = 0;
-        //float xLen = Mathf.Max(x, gameObject.transform.position.x) - Mathf.Min(x, gameObject.transform.position.x);
-        //float zLen = Mathf.Max(z, gameObject.transform.position.z) - Mathf.Min(z, gameObject.transform.position.z);
-        //float cornerY = (Mathf.Atan(xLen / zLen)) * 180 / 3.14f;
-        //Debug.Log("corner " + cornerY);
-
-        //transform.eulerAngles = new Vector3(0, cornerY, 0);
+        
 
         StartCoroutine(Shoot());
         
@@ -64,8 +57,7 @@ public class SuccubBehavior : MonoBehaviour
                 transform.rotation *= Quaternion.Euler(0, angle, 0);
                 
                 if (hit.distance < distanceObstacle )
-                {
-                    
+                {                   
                     if (turnRight && hit.collider.tag != "bullet")
                     {
                         angle = angle < 0 ? turnSpeed : -turnSpeed;
@@ -86,20 +78,23 @@ public class SuccubBehavior : MonoBehaviour
             }
             else
             {
+
+
                 if (hit.distance < distanceAttack)
                 {
-                    
                     if (hit.collider.tag == "Player")
                     {
-
                         Attack();
 
                     }
-                } 
-                else
-                {                    
-                    isAttacked = false;
+                    
                 }
+                else
+                {
+                    isAttacked = false;
+
+                }
+
             }
         }
     }
