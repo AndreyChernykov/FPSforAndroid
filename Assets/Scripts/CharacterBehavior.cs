@@ -17,7 +17,7 @@ public class CharacterBehavior : MonoBehaviour
     
     [SerializeField] private float timeRecovery;//время восстановления единицы здоровья
     Inventary inventary;
-    private float speedMove = 7;//скорость перемещения
+    private float speedMove = 7f;//скорость перемещения
     
     void Start()
     {
@@ -30,7 +30,17 @@ public class CharacterBehavior : MonoBehaviour
     public void Move()//ходьба
     {       
         rigidbody.AddForce(gameObject.transform.forward * speedMove);
-        
+
+
+
+    }
+
+    private void FixedUpdate()//временно для тестирования на компе!
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            Move();
+        }
     }
 
     public void Turn()//поворот влево/вправо

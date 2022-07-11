@@ -7,6 +7,8 @@ using UnityEngine.Events;
 
 public class MainController : MonoBehaviour
 {
+    private GameObject character;
+    private new Rigidbody rigidbody;
     //private event Action action;
     public static List<Action> actionList = new List<Action>();//лист с событиями
     
@@ -15,14 +17,18 @@ public class MainController : MonoBehaviour
 
     void Start()
     {
-        
+        character = GameObject.Find("Character");
+
+        rigidbody = character.GetComponent<Rigidbody>();
     }
 
-    
+
     void FixedUpdate()
     {
         //if (action != null) action.Invoke();
         ActionRead();
+
+
     }
 
     void ActionRead()
