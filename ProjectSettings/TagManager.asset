@@ -8,6 +8,7 @@ TagManager:
   - shot
   - dummy
   - enemy
+  - trigger
   layers:
   - Default
   - TransparentFX

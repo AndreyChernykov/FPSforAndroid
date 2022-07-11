@@ -13,7 +13,6 @@ public class ZombieBehavior : MonoBehaviour
     EnemyBehavior enemyBehavior;
     private bool isAttacked = false;
     int angle = 0;
-    float radiusRay = 1.5f;
     Ray ray;
 
     void Start()
@@ -36,7 +35,7 @@ public class ZombieBehavior : MonoBehaviour
         ray = new Ray(gameObject.transform.position, transform.forward);
 
         RaycastHit hit;
-        if (Physics.SphereCast(ray, radiusRay, out hit))
+        if (Physics.SphereCast(ray, 1.5f, out hit))
         {
             if (!isAttacked)
             {

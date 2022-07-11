@@ -52,6 +52,7 @@ public class CharacterBehavior : MonoBehaviour
         int dmg;
         if (collision.gameObject.tag == "enemy")
         {
+            
             dmg = collision.gameObject.GetComponent<EnemyBehavior>().Damage;
             Fault(dmg);
         }
