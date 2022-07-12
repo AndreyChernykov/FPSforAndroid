@@ -7,7 +7,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] public int amountBullets;
-    float speed = 30;
+    float speed = 40;
     [SerializeField] int damage;
     float lifeTime = 1;
     private new Rigidbody rigidbody;

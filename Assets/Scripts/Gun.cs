@@ -32,7 +32,7 @@ public class Gun : MonoBehaviour
                 GameObject bl = Instantiate(bulletPref);
 
                 bl.transform.SetParent(gameObject.transform);
-                bl.transform.localPosition = new Vector3(0, -0.22f, 2);
+                bl.transform.localPosition = new Vector3(0, -0.05f, 0.5f);
 
                 bl.transform.rotation = transform.rotation;
                 bl.transform.parent = null;
