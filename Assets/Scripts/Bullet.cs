@@ -6,13 +6,15 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] public int amountBullets;
-    float speed = 40;
+    [SerializeField] int amountBullets;//количество выпущеных пуль (для дроби)
+    [SerializeField] int force;//сила с которой отбрасывает врага
     [SerializeField] int damage;
+    [SerializeField] private float angleScatt;//угол разлёта
+    float speed = 40;   
     float lifeTime = 1;
     private new Rigidbody rigidbody;
     private float scattX = 0, scattY = 0;
-    [SerializeField] private float angleScatt;
+    
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -23,6 +25,9 @@ public class Bullet : MonoBehaviour
         Invoke("Destroy", lifeTime);
        
     }
+    public int AmountBullets { get { return amountBullets; } }
+
+    public int Force { get { return force; } }
 
     public int Damage { get { return damage; } }
 
@@ -40,7 +45,7 @@ private float Scatter()//разлёт для дроби
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision.gameObject.name);
-        if(collision.gameObject.tag != gameObject.tag) Destroy();
+        if (collision.gameObject.tag != gameObject.tag) Destroy();
     }
 
     public void Destroy()

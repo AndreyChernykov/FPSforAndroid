@@ -26,7 +26,7 @@ public class Gun : MonoBehaviour
             bulletOfShoot++;
             Debug.Log(bulletOfShoot + " bang!");
             gunIsCharged = bulletOfShoot >= numberOfBullet ? false : true;
-            amountBullets = bulletPref.GetComponent<Bullet>().amountBullets;
+            amountBullets = bulletPref.GetComponent<Bullet>().AmountBullets;
             while(amountBullets > 0)
             {
                 GameObject bl = Instantiate(bulletPref);

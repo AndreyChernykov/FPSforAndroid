@@ -5,17 +5,13 @@ using UnityEngine;
 
 public class CharacterBehavior : MonoBehaviour
 {
-    float angleVert;
-    float maxAngleVert = 20;//максимальный угол поворота вверх/вниз
-   
-
-
-    private new Rigidbody rigidbody;
-
     [SerializeField] private new Component camera;
     [SerializeField] private FixedJoystick joystick;
-    
     [SerializeField] private float timeRecovery;//время восстановления единицы здоровья
+    
+    float angleVert;
+    float maxAngleVert = 20;//максимальный угол поворота вверх/вниз
+    private new Rigidbody rigidbody;
     Inventary inventary;
     private float speedMove = 7f;//скорость перемещения
     
@@ -31,13 +27,11 @@ public class CharacterBehavior : MonoBehaviour
     {       
         rigidbody.AddForce(gameObject.transform.forward * speedMove);
 
-
-
     }
 
     private void FixedUpdate()//временно для тестирования на компе!
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.W))
         {
             Move();
         }
