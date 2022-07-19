@@ -5,37 +5,75 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    //[SerializeField] Rigidbody rigid
     
+    [SerializeField] GameObject panelChange;
+    [SerializeField] GameObject panelPauseMenu;
+    [SerializeField] GameObject[] btnActivate;
     CharacterBehavior characterBehavior;
     Gun gun;
-    
+    bool panelChangeIsVisible = false;
+    bool isPause = false;
     
     void Start()
     {
         characterBehavior = gameObject.GetComponent<CharacterBehavior>();
         gun = gameObject.GetComponentInChildren<Gun>();
-        Joystick();
+        JoystickTurn();
+        JoystickMove();
     }
 
-
-
-    public void ClickBtnMove()
+    public void ClickPauseMenu()//пауза
     {
-        MainController.actionList.Add(characterBehavior.Move);
+        int t;
+        if (!isPause)
+        {
+            t = 0;
+            panelPauseMenu.SetActive(true);
+            isPause = true;
+        }
+        else
+        {
+            t = 1;
+            panelPauseMenu.SetActive(false);
+            isPause = false;
+        }
+        Time.timeScale = t;
+    }
+    
+    public void ClickAmmoChange()//вызов панели с выбором боеприпасов
+    {
+        if(!panelChangeIsVisible)
+        {
+            panelChange.SetActive(true);
+            foreach(var btn in btnActivate)
+            {
+                btn.SetActive(false);
+            }
+            panelChangeIsVisible = true;
+        }
+        else
+        {
+            panelChange.SetActive(false);
+            foreach (var btn in btnActivate)
+            {
+                btn.SetActive(true);
+            }
+            panelChangeIsVisible = false;
+        }
+
         
-
     }
 
-    public void UnClickBtnMove()
-    {
-        MainController.actionList.Remove(characterBehavior.Move);
-    }
 
-    public void Joystick()
+    public void JoystickTurn()
     {
         MainController.actionList.Add(characterBehavior.Turn);
         MainController.actionList.Add(characterBehavior.VertVisibl);
+    }
+
+    public void JoystickMove()
+    {
+        MainController.actionList.Add(characterBehavior.Move);
     }
 
     public void ClickBtnShoot()
@@ -66,7 +104,8 @@ public class PlayerController : MonoBehaviour
                     MainController.actionList.Add(gun.ChargedShot);
                     break;
             }
-        } 
+        }
+        
     }
 
     public void UnClickBtnCharged()
@@ -76,6 +115,8 @@ public class PlayerController : MonoBehaviour
             MainController.actionList.Remove(gun.ChargedBullet);
             MainController.actionList.Remove(gun.ChargedShot);
             MainController.actionList.Remove(gun.ChargedDummy);
+
+            ClickAmmoChange();
         }
     }
 }

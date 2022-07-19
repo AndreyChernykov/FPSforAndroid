@@ -7,6 +7,7 @@ public class CharacterBehavior : MonoBehaviour
 {
     [SerializeField] private new Component camera;
     [SerializeField] private FixedJoystick joystick;
+    [SerializeField] private FixedJoystick joystickMove;
     [SerializeField] private float timeRecovery;//время восстановления единицы здоровья
     
     float angleVert;
@@ -24,9 +25,10 @@ public class CharacterBehavior : MonoBehaviour
 
 
     public void Move()//ходьба
-    {       
-        rigidbody.AddForce(gameObject.transform.forward * speedMove);
-
+    {
+        
+        rigidbody.AddForce(gameObject.transform.forward * speedMove * joystickMove.Vertical);
+        rigidbody.AddForce(gameObject.transform.right * speedMove * joystickMove.Horizontal);
     }
 
     private void FixedUpdate()//временно для тестирования на компе!

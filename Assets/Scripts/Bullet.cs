@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    
     [SerializeField] int amountBullets;//количество выпущеных пуль (для дроби)
     [SerializeField] int force;//сила с которой отбрасывает врага
     [SerializeField] int damage;
