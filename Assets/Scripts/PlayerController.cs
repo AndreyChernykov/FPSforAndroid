@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
     
     void Start()
     {
+        Time.timeScale = 1;
         characterBehavior = gameObject.GetComponent<CharacterBehavior>();
         gun = gameObject.GetComponentInChildren<Gun>();
         JoystickTurn();
@@ -38,6 +40,12 @@ public class PlayerController : MonoBehaviour
             isPause = false;
         }
         Time.timeScale = t;
+    }
+
+    public void ClickExitToMainMenu()//при нажатии выхода в главное меню
+    {
+        MainController.actionList.Clear();
+        SceneManager.LoadScene("MainMenu");
     }
     
     public void ClickAmmoChange()//вызов панели с выбором боеприпасов
