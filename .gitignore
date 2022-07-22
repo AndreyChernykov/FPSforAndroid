@@ -61,3 +61,4 @@ crashlytics-build.properties
 # Ignore UserSettings SukaZaebala
 *.dwlt
 UserSettings/
+**/com.unity.probuilder/Settings.json
