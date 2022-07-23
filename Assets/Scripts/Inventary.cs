@@ -6,7 +6,7 @@ public class Inventary
 {
     static int health = 10;//здоровье героя
     const int maxHealth = 10;
-
+    static int time = 1000;//время на игру
     static int dummyBullet = 10;//холостые патроны
     static int bullet = 10;//обычные патроны
     static int shotBullet = 10;//дробь
@@ -15,6 +15,14 @@ public class Inventary
     {
         get { return health; }
     }
+
+    public int Time
+    { 
+        get { return time; }
+        set { time--; }
+    }
+
+
 
     public void HealthFault(int d)//повреждение здоровья
     {
