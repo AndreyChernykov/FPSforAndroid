@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField] GameObject panelChange;
     [SerializeField] GameObject panelPauseMenu;
+    [SerializeField] GameObject panelGameOver;
     [SerializeField] GameObject[] btnActivate;
     CharacterBehavior characterBehavior;
     Gun gun;
@@ -127,4 +128,11 @@ public class PlayerController : MonoBehaviour
             ClickAmmoChange();
         }
     }
+
+    public void GameOver()
+    {
+        panelGameOver.SetActive(true);
+    }
+
+
 }
