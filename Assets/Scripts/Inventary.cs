@@ -4,12 +4,26 @@ using UnityEngine;
 
 public class Inventary
 {
-    static int health = 10;//здоровье героя
-    const int maxHealth = 10;
-    static int time = 10;//время на игру
+    const int HEALTH = 100;
+    const int TIME = 100;
+    const int BULLET = 10;
+    const int SHOT_BULET = 10;
+    const int DUMMY_BULLET = 10;
+
+    static int health;//здоровье героя
+    static int time;//время на игру
     static int dummyBullet = 10;//холостые патроны
     static int bullet = 10;//обычные патроны
     static int shotBullet = 10;//дробь
+
+    public Inventary()
+    {
+        health = HEALTH;
+        time = TIME;
+        dummyBullet = DUMMY_BULLET;
+        bullet = BULLET;
+        shotBullet = SHOT_BULET;
+    }
 
     public int Health
     {
@@ -34,7 +48,7 @@ public class Inventary
 
     public void HealthRecovery()//восстановление здоровья
     {
-        if (health > 0 && health < maxHealth)
+        if (health > 0 && health < HEALTH)
         {
             health++;
         }
