@@ -8,13 +8,13 @@ public class CharacterBehavior : MonoBehaviour
     [SerializeField] private new Component camera;
     [SerializeField] private FixedJoystick joystick;
     [SerializeField] private FixedJoystick joystickMove;
-    [SerializeField] private float timeRecovery;//время восстановления единицы здоровья
+    //[SerializeField] private float timeRecovery;//время восстановления единицы здоровья
     
     float angleVert;
     float maxAngleVert = 20;//максимальный угол поворота вверх/вниз
     private new Rigidbody rigidbody;
     Inventary inventary;
-    private float speedMove = 7f;//скорость перемещения
+    private float speedMove = 8f;//скорость перемещения
     
     void Start()
     {
@@ -83,7 +83,7 @@ public class CharacterBehavior : MonoBehaviour
         while (true)
         {
             inventary.HealthRecovery();
-            yield return new WaitForSeconds(timeRecovery);
+            yield return new WaitForSeconds(inventary.TimeRecovery);
         }
     }
 }

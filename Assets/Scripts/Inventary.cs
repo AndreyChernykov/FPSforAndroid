@@ -12,9 +12,10 @@ public class Inventary
 
     static int health;//здоровье героя
     static int time;//время на игру
-    static int dummyBullet = 10;//холостые патроны
-    static int bullet = 10;//обычные патроны
-    static int shotBullet = 10;//дробь
+    static int timeRecovery = 2;//время восстановления единицы здоровья
+    static int dummyBullet;//холостые патроны
+    static int bullet;//обычные патроны
+    static int shotBullet;//дробь
 
     public Inventary()
     {
@@ -36,7 +37,10 @@ public class Inventary
         set { time--; }
     }
 
-
+    public int TimeRecovery
+    {
+        get { return timeRecovery; }
+    }
 
     public void HealthFault(int d)//повреждение здоровья
     {
