@@ -2923,7 +2923,7 @@ PrefabInstance:
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
@@ -5927,7 +5927,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &1029351393
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6189,8 +6189,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 963194227}
-  joystick: {fileID: 156921639}
-  joystickMove: {fileID: 406273053}
 --- !u!114 &1036141018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6206,6 +6204,8 @@ MonoBehaviour:
   panelChange: {fileID: 1706357735}
   panelPauseMenu: {fileID: 201547232}
   panelGameOver: {fileID: 436106204}
+  joystickMove: {fileID: 406273053}
+  joystickTurn: {fileID: 156921639}
   btnActivate:
   - {fileID: 2095633962}
   - {fileID: 1376524594}
@@ -6407,7 +6407,7 @@ RectTransform:
   m_Children:
   - {fileID: 72067587}
   m_Father: {fileID: 1352885822}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -8930,9 +8930,9 @@ RectTransform:
   - {fileID: 1584622683}
   - {fileID: 1706357736}
   - {fileID: 201547233}
+  - {fileID: 1098274678}
   - {fileID: 406273052}
   - {fileID: 1190254051}
-  - {fileID: 1098274678}
   - {fileID: 436106205}
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -9693,7 +9693,7 @@ PrefabInstance:
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
@@ -10683,7 +10683,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1555442426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10772,7 +10772,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1555442425}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7, y: 1.13, z: 8.4}
+  m_LocalPosition: {x: 18.66, y: 3.79, z: 21.3}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -6,10 +6,9 @@ using UnityEngine;
 public class CharacterBehavior : MonoBehaviour
 {
     [SerializeField] private new Component camera;
-    [SerializeField] private FixedJoystick joystick;
-    [SerializeField] private FixedJoystick joystickMove;
-    //[SerializeField] private float timeRecovery;//время восстановления единицы здоровья
-    
+    //[SerializeField] private FixedJoystick joystick;
+    //[SerializeField] private FixedJoystick joystickMove;
+
     float angleVert;
     float maxAngleVert = 20;//максимальный угол поворота вверх/вниз
     private new Rigidbody rigidbody;
@@ -17,9 +16,12 @@ public class CharacterBehavior : MonoBehaviour
     private float speedMove = 8f;//скорость перемещения
     private float graviry = 200;//гравитация
     
+    PlayerController playerController;
 
     void Start()
     {
+        playerController = gameObject.GetComponent<PlayerController>();
+
         rigidbody = gameObject.GetComponent<Rigidbody>();
         inventary = new Inventary();
         StartCoroutine(HealthRecovery());
@@ -28,8 +30,9 @@ public class CharacterBehavior : MonoBehaviour
 
     public void Move()//ходьба
     {
+        
         rigidbody.AddForce(0, -graviry, 0);
-        rigidbody.velocity = new Vector3(speedMove * joystickMove.Horizontal, 0, speedMove * joystickMove.Vertical);
+        rigidbody.velocity = new Vector3(speedMove * playerController.JoystyckMoveHorizontal, 0, speedMove * playerController.JoystyckMoveVertical);
         rigidbody.velocity = transform.TransformDirection(rigidbody.velocity);
         
         //rigidbody.AddForce(gameObject.transform.forward * speedMove * joystickMove.Vertical);
@@ -39,14 +42,14 @@ public class CharacterBehavior : MonoBehaviour
 
     public void Turn()//поворот влево/вправо
     {
-        transform.rotation *= Quaternion.Euler(0, joystick.Horizontal, 0);
+        transform.rotation *= Quaternion.Euler(0, playerController.JoystickTurnHorizontal, 0);
 
         //transform.localEulerAngles += new Vector3(0, joystick.Horizontal, 0);        
     }
 
     public void VertVisibl()//поворот вверх/вниз
     {
-        angleVert -= joystick.Vertical;
+        angleVert -= playerController.JoysticTurnVertical;
         angleVert = Mathf.Clamp(angleVert, -maxAngleVert, maxAngleVert);
 
         camera.transform.localEulerAngles = new Vector3 (angleVert, 0, 0);

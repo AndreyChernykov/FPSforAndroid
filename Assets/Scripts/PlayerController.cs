@@ -10,7 +10,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject panelChange;
     [SerializeField] GameObject panelPauseMenu;
     [SerializeField] GameObject panelGameOver;
+    [SerializeField] FixedJoystick joystickMove;
+    [SerializeField] FixedJoystick joystickTurn;
     [SerializeField] GameObject[] btnActivate;
+
     CharacterBehavior characterBehavior;
     Gun gun;
     bool panelChangeIsVisible = false;
@@ -23,6 +26,26 @@ public class PlayerController : MonoBehaviour
         gun = gameObject.GetComponentInChildren<Gun>();
         JoystickTurn();
         JoystickMove();
+    }
+
+    public float JoystyckMoveHorizontal
+    {
+        get { return joystickMove.Horizontal; }
+    }
+
+    public float JoystyckMoveVertical
+    {
+        get { return joystickMove.Vertical; }
+    }
+
+    public float JoystickTurnHorizontal
+    {
+        get { return joystickTurn.Horizontal; }
+    }
+
+    public float JoysticTurnVertical
+    {
+        get { return joystickTurn.Vertical; }
     }
 
     public void ClickPauseMenu()//пауза

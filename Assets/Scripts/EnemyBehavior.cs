@@ -10,6 +10,7 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] private int speed;
     [SerializeField] private float timeCharge;
     [SerializeField] private GameObject bullet;
+
     private new Rigidbody rigidbody;
     bool isShoot = true;
 
@@ -38,6 +39,7 @@ public class EnemyBehavior : MonoBehaviour
 
     public void Move(int s)//движение
     {
+        
         rigidbody.velocity = transform.forward * s * Time.deltaTime;
     }
     public IEnumerator Shoot()
