@@ -15,6 +15,7 @@ public class CharacterBehavior : MonoBehaviour
     private new Rigidbody rigidbody;
     Inventary inventary;
     private float speedMove = 8f;//скорость перемещения
+    private float graviry = 200;//гравитация
     
 
     void Start()
@@ -27,20 +28,14 @@ public class CharacterBehavior : MonoBehaviour
 
     public void Move()//ходьба
     {
+        rigidbody.AddForce(0, -graviry, 0);
         rigidbody.velocity = new Vector3(speedMove * joystickMove.Horizontal, 0, speedMove * joystickMove.Vertical);
         rigidbody.velocity = transform.TransformDirection(rigidbody.velocity);
-
+        
         //rigidbody.AddForce(gameObject.transform.forward * speedMove * joystickMove.Vertical);
         //rigidbody.AddForce(gameObject.transform.right * speedMove * joystickMove.Horizontal);
     }
 
-    private void FixedUpdate()//временно для тестирования на компе!
-    {
-        if (Input.GetKey(KeyCode.W))
-        {
-            Move();
-        }
-    }
 
     public void Turn()//поворот влево/вправо
     {
@@ -75,8 +70,8 @@ public class CharacterBehavior : MonoBehaviour
 
     public void Fault(int d)//сделать чтобы повреждение могло быть не на единицу а разное
     {
-        rigidbody.AddForce(-transform.forward * 200);
-        rigidbody.AddForce(transform.up * 200);
+        rigidbody.AddForce(-transform.forward * 1000);
+        rigidbody.AddForce(transform.up * 1000);
         
         inventary.HealthFault(d);
     }
