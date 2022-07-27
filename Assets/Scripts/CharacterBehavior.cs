@@ -16,6 +16,7 @@ public class CharacterBehavior : MonoBehaviour
     Inventary inventary;
     private float speedMove = 8f;//скорость перемещения
     
+
     void Start()
     {
         rigidbody = gameObject.GetComponent<Rigidbody>();
@@ -26,9 +27,11 @@ public class CharacterBehavior : MonoBehaviour
 
     public void Move()//ходьба
     {
-        
-        rigidbody.AddForce(gameObject.transform.forward * speedMove * joystickMove.Vertical);
-        rigidbody.AddForce(gameObject.transform.right * speedMove * joystickMove.Horizontal);
+        rigidbody.velocity = new Vector3(speedMove * joystickMove.Horizontal, 0, speedMove * joystickMove.Vertical);
+        rigidbody.velocity = transform.TransformDirection(rigidbody.velocity);
+
+        //rigidbody.AddForce(gameObject.transform.forward * speedMove * joystickMove.Vertical);
+        //rigidbody.AddForce(gameObject.transform.right * speedMove * joystickMove.Horizontal);
     }
 
     private void FixedUpdate()//временно для тестирования на компе!
@@ -42,7 +45,8 @@ public class CharacterBehavior : MonoBehaviour
     public void Turn()//поворот влево/вправо
     {
         transform.rotation *= Quaternion.Euler(0, joystick.Horizontal, 0);
-        
+
+        //transform.localEulerAngles += new Vector3(0, joystick.Horizontal, 0);        
     }
 
     public void VertVisibl()//поворот вверх/вниз

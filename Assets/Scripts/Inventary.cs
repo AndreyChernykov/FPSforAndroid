@@ -62,6 +62,17 @@ public class Inventary
     {
         get { return bullet; }
     }
+
+    public int Shot
+    {
+        get { return shotBullet; }
+    }
+
+    public int Dummy
+    {
+        get { return dummyBullet; }
+    }
+
     public void AddBullet(int n)
     {
         bullet += n;
@@ -91,6 +102,7 @@ public class Inventary
     {
         if(shotBullet > 0)shotBullet -= n;
     }
+
 
     public override string ToString()
     {

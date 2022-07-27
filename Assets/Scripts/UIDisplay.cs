@@ -6,6 +6,8 @@ using TMPro;
 public class UIDisplay : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI textBullet;
+    [SerializeField] TextMeshProUGUI textShot;
+    [SerializeField] TextMeshProUGUI textDummy;
     [SerializeField] TextMeshProUGUI textHealth;
     [SerializeField] TextMeshProUGUI textTimer;
     Inventary inventary;
@@ -13,6 +15,8 @@ public class UIDisplay : MonoBehaviour
     {
         inventary = new Inventary();
         MainController.actionList.Add(DisplayNumberOfBullet);
+        MainController.actionList.Add(DisplayNumberOfShot);
+        MainController.actionList.Add(DisplayNumberOfDummy);
         MainController.actionList.Add(DisplayHealth);
         MainController.actionList.Add(DisplayTimer);
     }
@@ -27,11 +31,18 @@ public class UIDisplay : MonoBehaviour
         textHealth.text = "HEALTH: " + inventary.Health;
     }
 
-    public void DisplayNumberOfBullet()//отоброжение количества патронов
+    public void DisplayNumberOfBullet()//отоброжение количества патронов с пулями
+    {        
+        textBullet.text = inventary.Bullet.ToString();
+    }
+
+    public void DisplayNumberOfShot()//отоброжение количества патронов с дробью
     {
-        
-        textBullet.text = inventary.ToString();
+        textShot.text = inventary.Shot.ToString();
+    }
 
-
+    public void DisplayNumberOfDummy()//отоброжение количества патронов холостых
+    {
+        textDummy.text = inventary.Dummy.ToString();
     }
 }
