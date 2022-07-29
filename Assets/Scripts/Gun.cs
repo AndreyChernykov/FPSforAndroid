@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    [SerializeField] GameObject[] typOfBullet;
+    [SerializeField] Vector3 barrelEnd;//откуда вылетает пуля
     private bool gunIsCharged = false;//заряжен ли ствол
     private int numberOfBullet = 2;//количество заряжаемых патронов
     private int bulletOfShoot = 0;//количество выстрелов до перезарядки
     Inventary inventary;
     private int amountBullets;
-    [SerializeField] GameObject[] typOfBullet;
+    
     GameObject bulletPref;
 
     void Start()
@@ -32,7 +34,7 @@ public class Gun : MonoBehaviour
                 GameObject bl = Instantiate(bulletPref);
 
                 bl.transform.SetParent(gameObject.transform);
-                bl.transform.localPosition = new Vector3(0, -0.05f, 0.5f);
+                bl.transform.localPosition = barrelEnd;
 
                 bl.transform.rotation = transform.rotation;
                 bl.transform.parent = null;
