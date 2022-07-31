@@ -35,8 +35,6 @@ public class Gun : MonoBehaviour
             amountBullets = bulletPref.GetComponent<Bullet>().AmountBullets;
             while(amountBullets > 0)
             {
-
-
                 animator.SetBool("Shooting", true);
 
                 GameObject bl = Instantiate(bulletPref);
