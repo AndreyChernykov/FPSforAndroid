@@ -10,6 +10,10 @@ public class Gun : MonoBehaviour
     private int numberOfBullet = 2;//количество заряжаемых патронов
     private int bulletOfShoot = 0;//количество выстрелов до перезарядки
     Inventary inventary;
+    Animator animator;
+
+    Animation animationShoot;
+
     private int amountBullets;
     
     GameObject bulletPref;
@@ -17,20 +21,24 @@ public class Gun : MonoBehaviour
     void Start()
     {
         inventary = new Inventary();
+        animator = GetComponent<Animator>();
     }
 
     public void Shoot()//выстрелы
     {
-       
+        
         if (gunIsCharged)
-        {
-            
+        {          
             bulletOfShoot++;
             Debug.Log(bulletOfShoot + " bang!");
             gunIsCharged = bulletOfShoot >= numberOfBullet ? false : true;
             amountBullets = bulletPref.GetComponent<Bullet>().AmountBullets;
             while(amountBullets > 0)
             {
+
+
+                animator.SetBool("Shooting", true);
+
                 GameObject bl = Instantiate(bulletPref);
 
                 bl.transform.SetParent(gameObject.transform);
@@ -40,11 +48,19 @@ public class Gun : MonoBehaviour
                 bl.transform.parent = null;
 
                 amountBullets--;
+
+                Invoke("AnimShootEnd", 1f);
+
             }
 
 
         }
 
+    }
+
+    void AnimShootEnd()//конец анимации выстрела
+    {
+        animator.SetBool("Shooting", false);
     }
 
     void ChargedGun()//перезарядка
