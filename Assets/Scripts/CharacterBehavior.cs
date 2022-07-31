@@ -6,8 +6,8 @@ using UnityEngine;
 public class CharacterBehavior : MonoBehaviour
 {
     [SerializeField] private new Component camera;
-    //[SerializeField] private FixedJoystick joystick;
-    //[SerializeField] private FixedJoystick joystickMove;
+    [SerializeField] GameObject handsAndGun;
+    Animator animator;
 
     float angleVert;
     float maxAngleVert = 20;//максимальный угол поворота вверх/вниз
@@ -21,7 +21,7 @@ public class CharacterBehavior : MonoBehaviour
     void Start()
     {
         playerController = gameObject.GetComponent<PlayerController>();
-
+        animator = handsAndGun.GetComponent<Animator>();
         rigidbody = gameObject.GetComponent<Rigidbody>();
         inventary = new Inventary();
         StartCoroutine(HealthRecovery());
@@ -29,22 +29,21 @@ public class CharacterBehavior : MonoBehaviour
 
 
     public void Move()//ходьба
-    {
-        
+    {        
         rigidbody.AddForce(0, -graviry, 0);
         rigidbody.velocity = new Vector3(speedMove * playerController.JoystyckMoveHorizontal, 0, speedMove * playerController.JoystyckMoveVertical);
         rigidbody.velocity = transform.TransformDirection(rigidbody.velocity);
+
+        if (rigidbody.velocity.magnitude > 0) animator.SetBool("Runing", true);
+        else animator.SetBool("Runing", false);
         
-        //rigidbody.AddForce(gameObject.transform.forward * speedMove * joystickMove.Vertical);
-        //rigidbody.AddForce(gameObject.transform.right * speedMove * joystickMove.Horizontal);
     }
 
 
     public void Turn()//поворот влево/вправо
     {
         transform.rotation *= Quaternion.Euler(0, playerController.JoystickTurnHorizontal, 0);
-
-        //transform.localEulerAngles += new Vector3(0, joystick.Horizontal, 0);        
+        
     }
 
     public void VertVisibl()//поворот вверх/вниз
