@@ -6,6 +6,7 @@ public class StreetLight : MonoBehaviour
 {
     [SerializeField] Light pointLight;
     [SerializeField] Light spotLight;
+    [SerializeField] AudioClip audioClip;
     [SerializeField] float flickerFrequency;//частота мерцания
     [SerializeField] float flickerAlarmFrequency;//частота моргания когда враг около фонаря
     [SerializeField] float minIntensivity;//минимальная интенсивность
@@ -16,13 +17,14 @@ public class StreetLight : MonoBehaviour
     float rangeLightPoint;
     Light lightCompPoint;
     Light lightCompSpot;
+    AudioSource audioSource;
     Inventary inventary;
     public bool recoveryOn;//можно ли восстановить здоровье гг
 
     void Start()
     {        
         inventary = new Inventary();
-
+        audioSource = GetComponent<AudioSource>();
         lightCompPoint = pointLight.GetComponent<Light>();
         lightCompSpot = spotLight.GetComponent<Light>();
 
@@ -82,13 +84,14 @@ public class StreetLight : MonoBehaviour
 
     IEnumerator EnemyAlarm()//если враг около фонаря
     {
-
+        
         float rnd = Random.Range(2f, flickerAlarmFrequency);
         lightCompSpot.range = 0;
         lightCompPoint.range = 0;
         yield return new WaitForSeconds(rnd);
         lightCompSpot.range = rangeLightSpot;
         lightCompPoint.range = rangeLightPoint;
+        audioSource.PlayOneShot(audioClip);
         StopCoroutine(EnemyAlarm());
     }
 

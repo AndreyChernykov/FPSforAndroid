@@ -4526,6 +4526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointLight: {fileID: 1530099291}
   spotLight: {fileID: 598516942}
+  audioClip: {fileID: 8300000, guid: a4833bd3b2c05f74697a1833164f26b5, type: 3}
   flickerFrequency: 0.05
   flickerAlarmFrequency: 15
   minIntensivity: 12
@@ -4544,7 +4545,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2927b4c87fd02f84783ef9849e6ee69c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.05
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -6148,7 +6149,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!54 &1029351393
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6254,7 +6255,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1029351392}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -7.4, y: 1.1300001, z: 23.9}
+  m_LocalPosition: {x: -9.43, y: 1.1300001, z: 26.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
