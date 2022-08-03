@@ -7,16 +7,19 @@ public class CharacterBehavior : MonoBehaviour
 {
     [SerializeField] private new Component camera;
     [SerializeField] GameObject handsAndGun;
+    [SerializeField] AudioClip[] audioClips;
     Animator animator;
+    AudioSource audioSource;
+    PlayerController playerController;
+    private new Rigidbody rigidbody;
+    Inventary inventary;
 
     float angleVert;
     float maxAngleVert = 20;//максимальный угол поворота вверх/вниз
-    private new Rigidbody rigidbody;
-    Inventary inventary;
-    private float speedMove = 8f;//скорость перемещения
+    private float speedMove = 5f;//скорость перемещения
     private float graviry = 200;//гравитация
-    
-    PlayerController playerController;
+    bool playSoundStep = true;
+
 
     void Start()
     {
@@ -24,6 +27,7 @@ public class CharacterBehavior : MonoBehaviour
         animator = handsAndGun.GetComponent<Animator>();
         rigidbody = gameObject.GetComponent<Rigidbody>();
         inventary = new Inventary();
+        audioSource = GetComponent<AudioSource>();
         //StartCoroutine(HealthRecovery());
     }
 
@@ -33,12 +37,25 @@ public class CharacterBehavior : MonoBehaviour
         rigidbody.AddForce(0, -graviry, 0);
         rigidbody.velocity = new Vector3(speedMove * playerController.JoystyckMoveHorizontal, 0, speedMove * playerController.JoystyckMoveVertical);
         rigidbody.velocity = transform.TransformDirection(rigidbody.velocity);
+        if (rigidbody.velocity.magnitude > 0)
+        {
+            if (playSoundStep)
+            {
+                playSoundStep = false;
+                audioSource.PlayOneShot(audioClips[UnityEngine.Random.Range(0, audioClips.Length)]);
+                Invoke("SoundStep", 2f / rigidbody.velocity.magnitude);
+            }
+            animator.SetBool("Runing", true);
 
-        if (rigidbody.velocity.magnitude > 0) animator.SetBool("Runing", true);
+        }
         else animator.SetBool("Runing", false);
         
     }
 
+    void SoundStep()
+    {
+        playSoundStep = true;
+    }
 
     public void Turn()//поворот влево/вправо
     {

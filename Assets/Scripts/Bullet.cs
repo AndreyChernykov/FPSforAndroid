@@ -12,6 +12,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] int damage;
     [SerializeField] private float angleScatt;//угол разлёта
     [SerializeField] AudioClip[] audioClips;
+    
     AudioSource audioSource;
     float speed = 40;   
     float lifeTime = 1;
@@ -50,7 +51,11 @@ private float Scatter()//разлёт для дроби
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision.gameObject.name);
-        if (collision.gameObject.tag != gameObject.tag) Destroy();
+        if (collision.gameObject.tag != gameObject.tag) 
+        {
+            audioSource.Play();
+            Destroy();
+        } 
     }
 
     public void Destroy()
