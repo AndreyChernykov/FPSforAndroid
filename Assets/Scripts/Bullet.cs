@@ -11,6 +11,8 @@ public class Bullet : MonoBehaviour
     [SerializeField] int force;//сила с которой отбрасывает врага
     [SerializeField] int damage;
     [SerializeField] private float angleScatt;//угол разлёта
+    [SerializeField] AudioClip[] audioClips;
+    AudioSource audioSource;
     float speed = 40;   
     float lifeTime = 1;
     private new Rigidbody rigidbody;
@@ -20,6 +22,8 @@ public class Bullet : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
         MainController.actionList.Add(Move);
+        audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(audioClips[UnityEngine.Random.Range(0, audioClips.Length)]);
         scattX = Scatter();
         scattY = Scatter();
 
