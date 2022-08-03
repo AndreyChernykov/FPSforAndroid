@@ -16,9 +16,13 @@ public class StreetLight : MonoBehaviour
     float rangeLightPoint;
     Light lightCompPoint;
     Light lightCompSpot;
+    Inventary inventary;
+    public bool recoveryOn;//можно ли восстановить здоровье гг
 
     void Start()
     {        
+        inventary = new Inventary();
+
         lightCompPoint = pointLight.GetComponent<Light>();
         lightCompSpot = spotLight.GetComponent<Light>();
 
@@ -44,8 +48,36 @@ public class StreetLight : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.tag == "enemy") StartCoroutine(EnemyAlarm());
+        if (other.gameObject.tag == "enemy") 
+        {
+            StartCoroutine(EnemyAlarm());
+            recoveryOn = false;
+        } 
+
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            recoveryOn = true;
+            StartCoroutine(HealthRecovery());//включаем восстановление здоровья гг под фанарём
+
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player") 
+        {
+            recoveryOn = false;//отключаем восстановление здоровья гг под фанарём
+
+        }
+        if (other.gameObject.tag == "enemy")
+        {
+            recoveryOn = true;
+        }
     }
 
     IEnumerator EnemyAlarm()//если враг около фонаря
@@ -58,5 +90,15 @@ public class StreetLight : MonoBehaviour
         lightCompSpot.range = rangeLightSpot;
         lightCompPoint.range = rangeLightPoint;
         StopCoroutine(EnemyAlarm());
+    }
+
+    IEnumerator HealthRecovery()//восстановление здоровья
+    {
+        while (recoveryOn)
+        {
+            inventary.HealthRecovery();
+            yield return new WaitForSeconds(inventary.TimeRecovery);
+        }
+        StopCoroutine(HealthRecovery());
     }
 }

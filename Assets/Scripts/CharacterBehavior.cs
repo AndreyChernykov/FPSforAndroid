@@ -24,7 +24,7 @@ public class CharacterBehavior : MonoBehaviour
         animator = handsAndGun.GetComponent<Animator>();
         rigidbody = gameObject.GetComponent<Rigidbody>();
         inventary = new Inventary();
-        StartCoroutine(HealthRecovery());
+        //StartCoroutine(HealthRecovery());
     }
 
 
@@ -79,7 +79,7 @@ public class CharacterBehavior : MonoBehaviour
     }
 
 
-    IEnumerator HealthRecovery()//авто восстановление здоровья
+    public IEnumerator HealthRecovery()//восстановление здоровья
     {
         while (true)
         {
