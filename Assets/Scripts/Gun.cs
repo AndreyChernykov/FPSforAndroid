@@ -17,7 +17,6 @@ public class Gun : MonoBehaviour
     Inventary inventary;
     Animator animator;
 
-    Animation animationShoot;
     AudioSource audioSource;
     private int amountBullets;
     
