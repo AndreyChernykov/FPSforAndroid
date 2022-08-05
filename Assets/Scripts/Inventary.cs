@@ -5,7 +5,7 @@ using UnityEngine;
 public class Inventary
 {
     const int HEALTH = 100;
-    const int TIME = 100;
+    const int TIME = 500;
     const int BULLET = 10;
     const int SHOT_BULET = 10;
     const int DUMMY_BULLET = 10;
