@@ -14,7 +14,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] FixedJoystick joystickTurn;
     [SerializeField] GameObject[] btnActivate;
 
+    //[SerializeField] GameObject btnCharge;
+
     CharacterBehavior characterBehavior;
+    
     Gun gun;
     bool panelChangeIsVisible = false;
     bool isPause = false;
@@ -76,6 +79,7 @@ public class PlayerController : MonoBehaviour
     {
         if(!panelChangeIsVisible)
         {
+            
             panelChange.SetActive(true);
             foreach(var btn in btnActivate)
             {
@@ -127,13 +131,16 @@ public class PlayerController : MonoBehaviour
             switch (btn.tag)
             {
                 case "bullet":
-                    MainController.actionList.Add(gun.ChargedBullet);
+                    gun.ChargedBullet();
+                    //MainController.actionList.Add(gun.ChargedBullet);
                     break;
                 case "dummy":
-                    MainController.actionList.Add(gun.ChargedDummy);
+                    gun.ChargedDummy();
+                    //MainController.actionList.Add(gun.ChargedDummy);
                     break;
                 case "shot":
-                    MainController.actionList.Add(gun.ChargedShot);
+                    gun.ChargedShot();
+                    //MainController.actionList.Add(gun.ChargedShot);
                     break;
             }
         }
@@ -144,9 +151,9 @@ public class PlayerController : MonoBehaviour
     {
         if (gun != null)
         {
-            MainController.actionList.Remove(gun.ChargedBullet);
-            MainController.actionList.Remove(gun.ChargedShot);
-            MainController.actionList.Remove(gun.ChargedDummy);
+            //MainController.actionList.Remove(gun.ChargedBullet);
+            //MainController.actionList.Remove(gun.ChargedShot);
+            //MainController.actionList.Remove(gun.ChargedDummy);
 
             ClickAmmoChange();
         }
