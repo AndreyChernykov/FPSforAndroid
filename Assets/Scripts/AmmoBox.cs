@@ -6,7 +6,6 @@ public class AmmoBox : MonoBehaviour
 {
     [SerializeField] int amountBullet;//количество патронов
     Inventary inventary;
-    AudioSource audioSource;
 
     enum Box
     {
@@ -18,8 +17,7 @@ public class AmmoBox : MonoBehaviour
 
     void Start()
     {
-        inventary = new Inventary();  
-        audioSource = GetComponent<AudioSource>();
+        inventary = new Inventary();    
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -38,13 +36,7 @@ public class AmmoBox : MonoBehaviour
                     break;
             }
 
-            audioSource.Play();
-            Invoke("OnDestroy", 0.3f);
+            Destroy(transform.parent.gameObject);
         }
-    }
-
-    private void OnDestroy()
-    {
-        Destroy(gameObject);
     }
 }
