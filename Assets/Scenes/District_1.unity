@@ -8913,7 +8913,7 @@ MonoBehaviour:
   textDummy: {fileID: 1141469648}
   textHealth: {fileID: 1128870794}
   textTimer: {fileID: 1585778274}
-  textBookLeafs: {fileID: 0}
+  textBookLeafs: {fileID: 1820750780}
 --- !u!1 &1376524594
 GameObject:
   m_ObjectHideFlags: 0
