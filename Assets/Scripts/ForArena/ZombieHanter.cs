@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ZombieHanter : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] GameObject player;
+    
+    NavMeshAgent agent;
     void Start()
     {
-        
+        agent = GetComponent<NavMeshAgent>();
+        MainController.actionList.Add(Move);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Move()
     {
-        
+        agent.destination = player.transform.position;
     }
 }
