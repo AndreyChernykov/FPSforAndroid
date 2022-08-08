@@ -76,8 +76,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eccd100313e813e43a485eb34fd25248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoPref: {fileID: 3710201692177873853, guid: a35ee825213cfa646815e81ad7d84469,
-    type: 3}
+  ammoType:
+  - {fileID: 3710201692177873853, guid: a35ee825213cfa646815e81ad7d84469, type: 3}
+  - {fileID: 3710201692177873853, guid: d41431f5a136d4c48bdd4a431ba2aa9d, type: 3}
+  - {fileID: 3710201692177873853, guid: 64fe58bca45176645996a79fbc1cef0f, type: 3}
+  minCartriges: 2
+  maxCartriges: 8
 --- !u!1 &1695149649733982
 GameObject:
   m_ObjectHideFlags: 0

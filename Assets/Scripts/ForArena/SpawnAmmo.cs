@@ -21,5 +21,6 @@ public class SpawnAmmo : MonoBehaviour
             box.transform.position = transform.position;
             yield return new WaitForSeconds(spawnTime);
         }
+        
     }
 }

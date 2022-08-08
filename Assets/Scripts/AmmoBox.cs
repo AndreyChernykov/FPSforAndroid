@@ -5,8 +5,15 @@ using UnityEngine;
 public class AmmoBox : MonoBehaviour
 {
     [SerializeField] int amountBullet;//количество патронов
+    [SerializeField] Box box;
     Inventary inventary;
     AudioSource audioSource;
+
+    public int AmountBullet
+    {
+        get { return amountBullet; }
+        set { amountBullet = value; }
+    }
 
     enum Box
     {
@@ -14,11 +21,10 @@ public class AmmoBox : MonoBehaviour
         Dummy,
         Shot,
     }
-    [SerializeField] Box box;
 
     void Start()
     {
-        inventary = new Inventary();  
+        inventary = new Inventary();
         audioSource = GetComponent<AudioSource>();
     }
     private void OnCollisionEnter(Collision collision)

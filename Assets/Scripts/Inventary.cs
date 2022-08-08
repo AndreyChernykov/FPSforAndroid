@@ -20,7 +20,7 @@ public class Inventary
     static int shotBullet;//дробь
     static int bookLeafs;//собрано листов из книги
 
-    public Inventary()
+    public void StartGame()
     {
         health = HEALTH;
         time = TIME;
