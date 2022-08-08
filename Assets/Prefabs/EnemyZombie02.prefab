@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 804333401970739620}
   - component: {fileID: 804333401970739623}
   - component: {fileID: 804333401970739622}
+  - component: {fileID: 1112046036617227820}
   m_Layer: 0
-  m_Name: EnemyZombie
+  m_Name: EnemyZombie02
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +65,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   damage: 10
-  speed: 50
+  speed: 0
   timeCharge: 0
   bullet: {fileID: 0}
 --- !u!114 &804333401970739623
@@ -74,7 +75,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 804333401970739617}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33a160f730d769b4d8458688361b4c68, type: 3}
   m_Name: 
@@ -99,6 +100,28 @@ Rigidbody:
   m_Interpolate: 2
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!195 &1112046036617227820
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804333401970739617}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &804333403092539941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -165,12 +188,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2073cf0e1518e7c41937d45bbfb37fe2, type: 2}
+      objectReference: {fileID: 2100000, guid: ef5e4bb5738bbf648a9858d7731400ba, type: 2}
     - target: {fileID: -6464769817896114387, guid: 47c540c4dae71c44e8fcdc290d5c05e2,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2073cf0e1518e7c41937d45bbfb37fe2, type: 2}
+      objectReference: {fileID: 2100000, guid: ef5e4bb5738bbf648a9858d7731400ba, type: 2}
     - target: {fileID: 919132149155446097, guid: 47c540c4dae71c44e8fcdc290d5c05e2,
         type: 3}
       propertyPath: m_Name
