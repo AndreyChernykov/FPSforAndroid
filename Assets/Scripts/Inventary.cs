@@ -8,7 +8,7 @@ public class Inventary
     const int TIME = 500;
     const int TIME_RECOVERY = 2;//время восстановления единицы здоровья
     const int BULLET = 10;
-    const int SHOT_BULET = 10;
+    const int SHOT_BULET = 0;
     const int DUMMY_BULLET = 10;
     const int ALL_BOOK_LEAFS = 10;//всего итемов собираемых листков книги в игре
 
@@ -19,6 +19,7 @@ public class Inventary
     static int bullet;//обычные патроны
     static int shotBullet;//дробь
     static int bookLeafs;//собрано листов из книги
+    static int killsZombies;//количество убитых зоби
 
     public void StartGame()
     {
@@ -28,6 +29,7 @@ public class Inventary
         bullet = BULLET;
         shotBullet = SHOT_BULET;
         bookLeafs = 0;
+        killsZombies = 0;
     }
 
     public int Health
@@ -116,6 +118,12 @@ public class Inventary
     public int AllBookLeafs
     {
         get { return ALL_BOOK_LEAFS; }
+    }
+
+    public int KillsZombies
+    {
+        get { return killsZombies; }
+        set { killsZombies += value; }
     }
 
     public override string ToString()

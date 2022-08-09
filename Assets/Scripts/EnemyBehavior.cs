@@ -13,28 +13,33 @@ public class EnemyBehavior : MonoBehaviour
 
     private new Rigidbody rigidbody;
     bool isShoot = true;
+    bool isAlive = true;
+
+    Inventary inventary;
 
     private void Start()
     {
+        inventary = new Inventary();
         rigidbody = GetComponent<Rigidbody>();  
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "bullet")
-        {            
-            int dmg = collision.gameObject.GetComponent<Bullet>().Damage;
-            int force = collision.gameObject.GetComponent<Bullet>().Force;
-            health -= dmg;
-            rigidbody.AddForce(new Vector3(collision.gameObject.transform.position.x, collision.gameObject.transform.position.y, collision.gameObject.transform.position.y) * force);   
-            if (health <= 0) { OnDestroy(); }
-        }
-        if(collision.gameObject.tag == "Player")
+        if (isAlive)
         {
-            //rigidbody.AddForce(-transform.forward * speed * 2);
-        }
-
-       
+            if (collision.gameObject.tag == "bullet")
+            {
+                int dmg = collision.gameObject.GetComponent<Bullet>().Damage;
+                int force = collision.gameObject.GetComponent<Bullet>().Force;
+                health -= dmg;
+                rigidbody.AddForce(new Vector3(collision.gameObject.transform.position.x, collision.gameObject.transform.position.y, collision.gameObject.transform.position.y) * force);
+                if (health <= 0) { OnDestroy(); }
+            }
+            if (collision.gameObject.tag == "Player")
+            {
+                //rigidbody.AddForce(-transform.forward * speed * 2);
+            }
+        }       
     }
 
     public void Move(int s)//движение
@@ -56,7 +61,14 @@ public class EnemyBehavior : MonoBehaviour
     }
 
     public void OnDestroy()
-    {        
+    {
+        if (isAlive) 
+        {
+            inventary.KillsZombies = 1;
+            isAlive = false;
+        }
+        
+        
         Destroy(gameObject);
     }
 

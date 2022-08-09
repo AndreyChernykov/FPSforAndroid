@@ -27,6 +27,9 @@ public class Gun : MonoBehaviour
         inventary = new Inventary();
         animator = hendsAndGun.GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+
+        bulletPref = typOfBullet[2];//заряжаем пушку перед началом игры
+        gunIsCharged = true;
     }
 
     public void Shoot()//выстрелы

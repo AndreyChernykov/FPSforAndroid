@@ -5,11 +5,13 @@ using UnityEngine.AI;
 
 public class ZombieHanter : MonoBehaviour
 {
-    [SerializeField] GameObject player;
-    
+    static GameObject player;
+    EnemyBehavior enemyBehavior;
     NavMeshAgent agent;
     void Start()
     {
+        enemyBehavior = GetComponent<EnemyBehavior>();
+        player = GameObject.Find("Character");
         agent = GetComponent<NavMeshAgent>();
         MainController.actionList.Add(Move);
     }
@@ -17,5 +19,11 @@ public class ZombieHanter : MonoBehaviour
     private void Move()
     {
         agent.destination = player.transform.position;
+    }
+
+    public void OnDestroy()
+    {
+        MainController.actionList.Remove(Move);
+        enemyBehavior.OnDestroy();
     }
 }

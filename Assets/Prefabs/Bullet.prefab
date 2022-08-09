@@ -114,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amountBullets: 1
   force: 0
-  damage: 5
+  damage: 20
   angleScatt: 2
   audioClips:
   - {fileID: 8300000, guid: da411423bf0623f419c323029279f7b1, type: 3}
