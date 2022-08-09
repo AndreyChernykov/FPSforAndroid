@@ -37,7 +37,7 @@ public class EnemyBehavior : MonoBehaviour
             }
             if (collision.gameObject.tag == "Player")
             {
-                rigidbody.AddForce(-transform.forward * speed * 4);
+                //rigidbody.AddForce(-transform.forward * speed * 4);
             }
         }       
     }
