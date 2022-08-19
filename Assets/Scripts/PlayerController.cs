@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject panelChange;
     [SerializeField] GameObject panelPauseMenu;
     [SerializeField] GameObject panelGameOver;
-    [SerializeField] GameObject panelDamage;
     [SerializeField] FixedJoystick joystickMove;
     [SerializeField] FixedJoystick joystickTurn;
     [SerializeField] GameObject[] btnActivate;
@@ -166,12 +165,5 @@ public class PlayerController : MonoBehaviour
         panelGameOver.SetActive(true);
     }
 
-    public IEnumerator DamagePanel()//активация/деакцтивация панели отображающей дамаг
-    {
-        panelDamage.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
-        panelDamage.SetActive(false);
-        StopCoroutine(DamagePanel());
-    }
 
 }

@@ -88,13 +88,10 @@ public class CharacterBehavior : MonoBehaviour
         }
     }
 
-
-
     public void Fault(int d)//сделать чтобы повреждение могло быть не на единицу а разное
     {
         rigidbody.AddForce(-transform.forward * 1000);
         rigidbody.AddForce(transform.up * 1000);
-        StartCoroutine(playerController.DamagePanel());
         
         inventary.HealthFault(d);
     }
