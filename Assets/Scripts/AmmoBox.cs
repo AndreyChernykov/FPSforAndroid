@@ -6,6 +6,7 @@ public class AmmoBox : MonoBehaviour
 {
     [SerializeField] int amountBullet;//количество патронов
     [SerializeField] Box box;
+    [SerializeField] Material materialAmmo;
     Inventary inventary;
     AudioSource audioSource;
 
@@ -24,8 +25,23 @@ public class AmmoBox : MonoBehaviour
 
     void Start()
     {
+        
         inventary = new Inventary();
         audioSource = GetComponent<AudioSource>();
+        Color color = Color.red;
+        switch (box)
+        {
+            case Box.Bullet:
+                color = Color.red;
+                break;
+            case Box.Shot:
+                color = Color.blue;
+                break;
+            case Box.Dummy:
+                color = Color.green;
+                break;
+        }
+        materialAmmo.color = color;
     }
     private void OnCollisionEnter(Collision collision)
     {

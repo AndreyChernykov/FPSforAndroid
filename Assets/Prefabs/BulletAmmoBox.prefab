@@ -62,6 +62,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amountBullet: 10
   box: 0
+  materialAmmo: {fileID: -7760337498784302257, guid: 43b902a4f8fb68e44afa88c3414b13d4,
+    type: 3}
 --- !u!82 &7820468751246704480
 AudioSource:
   m_ObjectHideFlags: 0
