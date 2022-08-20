@@ -17,6 +17,7 @@ public class Gun : MonoBehaviour
     Inventary inventary;
     Animator animator;
 
+    Animation animationShoot;
     AudioSource audioSource;
     private int amountBullets;
     
@@ -76,7 +77,7 @@ public class Gun : MonoBehaviour
         bulletOfShoot = 0;
         audioSource.PlayOneShot(charged);
         
-        Invoke("AnimChargeEnd", 2.5f);
+        Invoke("AnimChargeEnd", 2f);
     }
 
     void AnimChargeEnd()//конец анимации перезарядки
