@@ -79,8 +79,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammoType:
   - {fileID: 3710201692177873853, guid: a35ee825213cfa646815e81ad7d84469, type: 3}
-  - {fileID: 3710201692177873853, guid: d41431f5a136d4c48bdd4a431ba2aa9d, type: 3}
-  - {fileID: 3710201692177873853, guid: 64fe58bca45176645996a79fbc1cef0f, type: 3}
   minCartriges: 2
   maxCartriges: 8
   crashedAudio: {fileID: 8300000, guid: f888ce4c6af6f974682b1942a502f5fa, type: 3}
