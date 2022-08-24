@@ -5,25 +5,31 @@ using UnityEngine;
 public class Inventary
 {
     const int HEALTH = 100;
-    const int TIME = 100;
+    const int TIME = 500;
+    const int TIME_RECOVERY = 2;//время восстановления единицы здоровья
     const int BULLET = 10;
-    const int SHOT_BULET = 10;
+    const int SHOT_BULET = 0;
     const int DUMMY_BULLET = 10;
+    const int ALL_BOOK_LEAFS = 10;//всего итемов собираемых листков книги в игре
 
     static int health;//здоровье героя
     static int time;//время на игру
-    static int timeRecovery = 2;//время восстановления единицы здоровья
+    
     static int dummyBullet;//холостые патроны
     static int bullet;//обычные патроны
     static int shotBullet;//дробь
+    static int bookLeafs;//собрано листов из книги
+    static int killsZombies;//количество убитых зоби
 
-    public Inventary()
+    public void StartGame()
     {
         health = HEALTH;
         time = TIME;
         dummyBullet = DUMMY_BULLET;
         bullet = BULLET;
         shotBullet = SHOT_BULET;
+        bookLeafs = 0;
+        killsZombies = 0;
     }
 
     public int Health
@@ -39,7 +45,7 @@ public class Inventary
 
     public int TimeRecovery
     {
-        get { return timeRecovery; }
+        get { return TIME_RECOVERY; }
     }
 
     public void HealthFault(int d)//повреждение здоровья
@@ -103,6 +109,22 @@ public class Inventary
         if(shotBullet > 0)shotBullet -= n;
     }
 
+    public int BookLeaf
+    {
+        get { return bookLeafs; }
+        set { bookLeafs += value; }
+    }
+
+    public int AllBookLeafs
+    {
+        get { return ALL_BOOK_LEAFS; }
+    }
+
+    public int KillsZombies
+    {
+        get { return killsZombies; }
+        set { killsZombies += value; }
+    }
 
     public override string ToString()
     {

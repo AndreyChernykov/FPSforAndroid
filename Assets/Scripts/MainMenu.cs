@@ -19,7 +19,7 @@ public class MainMenu : MonoBehaviour
 
     public void ClickBtnPlayNew()//здесь будет сброс прогресса и начало игры сначала)
     {
-        SceneManager.LoadScene("District01");
+        SceneManager.LoadScene("Arena");
     }
 
     public void UIElementActivs(bool b)//пр€чем-активируем элементы меню

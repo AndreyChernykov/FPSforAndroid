@@ -103,6 +103,7 @@ public class PlayerController : MonoBehaviour
 
     public void JoystickTurn()
     {
+
         MainController.actionList.Add(characterBehavior.Turn);
         MainController.actionList.Add(characterBehavior.VertVisibl);
     }
