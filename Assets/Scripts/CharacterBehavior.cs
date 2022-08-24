@@ -27,6 +27,7 @@ public class CharacterBehavior : MonoBehaviour
         animator = handsAndGun.GetComponent<Animator>();
         rigidbody = gameObject.GetComponent<Rigidbody>();
         inventary = new Inventary();
+        inventary.StartGame();
         audioSource = GetComponent<AudioSource>();
         //StartCoroutine(HealthRecovery());
     }

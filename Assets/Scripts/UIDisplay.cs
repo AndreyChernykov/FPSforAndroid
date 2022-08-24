@@ -10,6 +10,9 @@ public class UIDisplay : MonoBehaviour
     [SerializeField] TextMeshProUGUI textDummy;
     [SerializeField] TextMeshProUGUI textHealth;
     [SerializeField] TextMeshProUGUI textTimer;
+    [SerializeField] TextMeshProUGUI textBookLeafs;
+    [SerializeField] TextMeshProUGUI textKillsZombies;
+
     Inventary inventary;
     private void Start()
     {
@@ -19,7 +22,10 @@ public class UIDisplay : MonoBehaviour
         MainController.actionList.Add(DisplayNumberOfDummy);
         MainController.actionList.Add(DisplayHealth);
         MainController.actionList.Add(DisplayTimer);
+        MainController.actionList.Add(DisplayBookLeafs);
+        MainController.actionList.Add(DisplayKillsZombies);
     }
+
 
     public void DisplayTimer()//отображение времени игры 
     {      
@@ -44,5 +50,15 @@ public class UIDisplay : MonoBehaviour
     public void DisplayNumberOfDummy()//отоброжение количества патронов холостых
     {
         textDummy.text = inventary.Dummy.ToString();
+    }
+
+    public void DisplayBookLeafs()//отображение собраных листков из книги
+    {
+        textBookLeafs.text = "Book leafs: " + inventary.BookLeaf + "/" + inventary.AllBookLeafs;
+    }
+
+    public void DisplayKillsZombies()//отображение собраных листков из книги
+    {
+        textKillsZombies.text = "Kills: " + inventary.KillsZombies;
     }
 }

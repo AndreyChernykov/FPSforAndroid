@@ -5,7 +5,16 @@ using UnityEngine;
 public class AmmoBox : MonoBehaviour
 {
     [SerializeField] int amountBullet;//количество патронов
+    [SerializeField] Box box;
+    [SerializeField] Material materialAmmo;
     Inventary inventary;
+    AudioSource audioSource;
+
+    public int AmountBullet
+    {
+        get { return amountBullet; }
+        set { amountBullet = value; }
+    }
 
     enum Box
     {
@@ -13,11 +22,26 @@ public class AmmoBox : MonoBehaviour
         Dummy,
         Shot,
     }
-    [SerializeField] Box box;
 
     void Start()
     {
-        inventary = new Inventary();    
+        
+        inventary = new Inventary();
+        audioSource = GetComponent<AudioSource>();
+        Color color = Color.red;
+        switch (box)
+        {
+            case Box.Bullet:
+                color = Color.red;
+                break;
+            case Box.Shot:
+                color = Color.blue;
+                break;
+            case Box.Dummy:
+                color = Color.green;
+                break;
+        }
+        materialAmmo.color = color;
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -36,7 +60,13 @@ public class AmmoBox : MonoBehaviour
                     break;
             }
 
-            Destroy(transform.parent.gameObject);
+            audioSource.Play();
+            Invoke("OnDestroy", 0.3f);
         }
+    }
+
+    private void OnDestroy()
+    {
+        Destroy(gameObject);
     }
 }
